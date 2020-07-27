@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_clean.c                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: eovertoo <marvin@codam.nl>                   +#+                     */
+/*   By: eovertoo <eovertoo@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/23 13:30:22 by eovertoo      #+#    #+#                 */
-/*   Updated: 2020/01/23 13:14:26 by eovertoo      ########   odam.nl         */
+/*   Created: 2019/09/05 12:36:18 by eovertoo      #+#    #+#                 */
+/*   Updated: 2020/07/27 12:21:57 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "printf.h"
 
-int		ft_strlen(const char *str)
+void				ft_clean_struct(t_flags *check)
 {
-	int		i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+	check->width = 0;
+	check->percision = 0;
+	check->option = 0;
+	check->type = 0;
+	check->floats_roundoff = 0;
 }

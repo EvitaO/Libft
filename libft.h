@@ -6,7 +6,7 @@
 /*   By: eovertoo <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/25 16:52:40 by eovertoo      #+#    #+#                 */
-/*   Updated: 2019/04/11 12:53:39 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/02/21 01:56:21 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include "./ft_printf/printf.h"
+
+# define BUFF_SIZE 9999
 
 typedef struct		s_list
 {
@@ -51,7 +54,7 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_strmap(char const *s, char (*f)(char));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 void				ft_striter(char *s, void (*f)(char *));
-size_t				ft_strlen(const char *str);
+int					ft_strlen(const char *str);
 char				*ft_strcpy(char *des, const char *src);
 char				*ft_strncpy(char *des, const char *src, size_t len);
 int					ft_strcmp(const char *s1, const char *s2);
@@ -61,6 +64,7 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_isalnum(int c);
 int					ft_isdigit(int c);
+int					ft_isnum(char *str);
 void				ft_putchar(char c);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl(char const *s);
@@ -89,5 +93,8 @@ char				*ft_strncat(char *s1, const char *s2, size_t n);
 void				*ft_memalloc(size_t size);
 char				*ft_strnew(size_t size);
 void				ft_strclr(char *s);
+
+int					get_next_line(const int fd, char **line);
+int					ft_printf(const char *restrict format, ...);
 
 #endif

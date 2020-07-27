@@ -6,7 +6,7 @@
 #    By: eovertoo <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/25 15:40:42 by eovertoo      #+#    #+#                  #
-#    Updated: 2019/04/10 14:01:58 by eovertoo      ########   odam.nl          #
+#    Updated: 2020/02/21 01:56:37 by eovertoo      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC = atoi bzero isalnum isalpha isascii isdigit isprint\
 	strnew strnstr strrchr strsplit strstr strsub\
 	strtrim tolower toupper lstnew lstdelone\
 	lstdel lstadd lstiter swap isspace islower\
-	isupper strrev isblank lstmap list_size
+	isupper strrev isblank lstmap list_size\
+	get_next_line isnum
 
 FILEC =	$(SRC:%=ft_%.c)
 
@@ -36,7 +37,8 @@ OBJ = atoi bzero isalnum isalpha isascii isdigit isprint\
 	strnew strnstr strrchr strsplit strstr strsub\
 	strtrim tolower toupper lstnew lstdelone\
 	lstdel lstadd lstiter swap isspace islower\
-	isupper strrev isblank lstmap list_size
+	isupper strrev isblank lstmap list_size\
+	get_next_line isnum
 
 FILEO = $(OBJ:%=ft_%.o)
 
@@ -45,17 +47,18 @@ INC = libft.h
 all: $(NAME)
 
 $(NAME):
-	@echo "Compiling..."
+	@Make -C ./ft_printf
 	@gcc -Wall -Wextra -Werror -c $(FILEC) -I$(INC)
+	@mv ft_printf/libftprintf.a $(NAME)
 	@ar rc $(NAME) $(FILEO)
 	@ranlib $(NAME)
 
 clean:
-	@echo "Objects have been removed."
+	@Make clean -C ./ft_printf
 	@/bin/rm -f $(FILEO)
 
 fclean: clean
-	@echo "Library has been removed."
+	@Make fclean -C ./ft_printf
 	@/bin/rm -f $(NAME)
 
 re: fclean all

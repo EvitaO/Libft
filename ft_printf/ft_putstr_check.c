@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_putstr_check.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: eovertoo <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/23 13:30:22 by eovertoo      #+#    #+#                 */
-/*   Updated: 2020/01/23 13:14:26 by eovertoo      ########   odam.nl         */
+/*   Created: 2019/03/23 13:15:13 by eovertoo      #+#    #+#                 */
+/*   Updated: 2020/07/27 12:23:56 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "printf.h"
 
-int		ft_strlen(const char *str)
+void	ft_putstr_check(char const *s, t_flags *check)
 {
-	int		i;
+	int i;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (!s)
+		return ;
+	while (s[i] != '\0')
+	{
+		write(1, &s[i], 1);
 		i++;
-	return (i);
+	}
+	check->count = check->count + i;
 }

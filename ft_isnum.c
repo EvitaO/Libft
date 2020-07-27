@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_isnum.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: eovertoo <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/23 13:30:22 by eovertoo      #+#    #+#                 */
-/*   Updated: 2020/01/23 13:14:26 by eovertoo      ########   odam.nl         */
+/*   Created: 2020/02/21 01:52:09 by eovertoo      #+#    #+#                 */
+/*   Updated: 2020/02/22 12:23:03 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		ft_strlen(const char *str)
+int				ft_isnum(char *str)
 {
-	int		i;
+	int			i;
 
 	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+	while (str[i])
+	{
+		if (str[i] == '-' || str[i] == '+')
+			i++;
+		while (str[i] >= '0' && str[i] <= '9')
+			i++;
+		if (str[i] != '\0')
+			return (1);
+	}
+	return (0);
 }
